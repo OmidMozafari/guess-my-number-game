@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="practice.css" />
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <button class="again">Again</button>
+        <h1>Guess My Number!</h1>
+        <div class="headerNumberContainer">
+          <p>(Between 1 and 20)</p>
+        </div>
+        <div class="number">?</div>
+      </header>
+
+      <main>
+        <div class="numberContainer">
+          <input type="number" id="inputNumber" />
+          <div class="numberButtonContainer">
+            <button>Check!</button>
+          </div>
+        </div>
+
+        <div class="mainTextContainer">
+          <p id="guessingPara">Start Guessing...</p>
+          <p class="scoreTexts" id="firstScore">💯 Score: <span>0</span></p>
+          <p class="scoreTexts">🥇 High Score: <span>0</span></p>
+        </div>
+      </main>
+    </div>
+    <script src="practice.js"></script>
+  </body>
+</html>
