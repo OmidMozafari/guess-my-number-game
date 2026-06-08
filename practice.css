@@ -46,7 +46,7 @@ header p {
   color: white;
 }
 /* this relates to the center box of the heaser while the quesiton mark is within a box*/
-.number {
+#boxNumber {
   color: #333;
   background-color: var(--backroundColor);
   display: flex;

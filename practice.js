@@ -1,5 +1,3 @@
-"use strict";
-
 // understanding the problem
 // how can we get the value of the input? answer: using input.value
 // how can we generate a random number ? answer: using the random method
@@ -18,30 +16,35 @@
 // reset the score and high score when the user clicked the again button
 // change the style of backround to green color
 
+"use strict";
 const body = document.body;
-const againButton = document.getElementsByClassName("again");
+const againButton = document.getElementById("again");
 const inputNum = document.getElementById("inputNumber");
 const checkButton = document.getElementById("checkButton");
 const score = document.getElementById("score");
-
+const boxNumber = document.getElementById("boxNumber");
 let currentScore = 20;
-
 score.innerHTML = currentScore;
 
 const highScore = document.getElementById("highScore");
 const guessingPara = document.getElementById("guessingPara");
 
 guessingPara.innerText = "Start guesssing...";
+let randomNumber = Math.trunc(Math.random() * 20) + 1;
 
-let randomNumber = Math.trunc(Math.random() * 21);
-checkButton.addEventListener("click", function checkGuess() {
+let highScoreValue = 0;
+function checkGuess() {
   let inputNumber = Number(inputNum.value);
   if (randomNumber === inputNumber) {
     body.style.backgroundColor = "green";
     guessingPara.innerText = "🎉 Correct Number!";
-    highScore.innerText = currentScore;
+    boxNumber.innerHTML = randomNumber;
+    if (currentScore > highScoreValue) {
+      highScoreValue = currentScore;
+      highScore.innerText = highScoreValue;
+    }
   } else {
-    // inputNum.value = ""; FIX ME
+    inputNum.value = "";
     currentScore--;
     score.innerHTML = currentScore;
   }
@@ -56,4 +59,17 @@ checkButton.addEventListener("click", function checkGuess() {
       "💥 You lost the game! \n Press again button if you \n want to play again";
     checkButton.removeEventListener("click", checkGuess);
   }
+}
+checkButton.addEventListener("click", checkGuess);
+againButton.addEventListener("click", () => {
+  if (currentScore === 0) {
+    checkButton.addEventListener("click", checkGuess);
+  }
+  body.style.backgroundColor = "rgb(30, 30, 30)";
+  randomNumber = Math.trunc(Math.random() * 20) + 1;
+  boxNumber.innerHTML = "?";
+  inputNum.value = "";
+  guessingPara.innerText = "Start guesssing...";
+  currentScore = 20;
+  score.innerHTML = currentScore;
 });
