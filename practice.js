@@ -35,7 +35,10 @@ let randomNumber = Math.trunc(Math.random() * 20) + 1;
 let highScoreValue = 0;
 function checkGuess() {
   let inputNumber = Number(inputNum.value);
-  if (randomNumber === inputNumber) {
+  if (!inputNumber) {
+    guessingPara.innerText = "⛔ No Number!";
+    return;
+  } else if (randomNumber === inputNumber) {
     body.style.backgroundColor = "green";
     guessingPara.innerText = "🎉 Correct Number!";
     boxNumber.innerHTML = randomNumber;
